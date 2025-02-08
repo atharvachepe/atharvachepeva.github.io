@@ -13,12 +13,16 @@
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             font-family: 'Arial', sans-serif;
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
         .container {
             background: white;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
         }
         h1 {
             color: #d63384;
@@ -43,14 +47,40 @@
             color: white;
             position: absolute;
         }
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+        .flowers, .balloons {
+            position: absolute;
+            width: 100px;
+        }
+        .flowers {
+            bottom: 10px;
+            left: 10px;
+        }
+        .balloons {
+            top: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="sparkles"></div>
+    <img class="flowers" src="https://www.pngmart.com/files/21/Beautiful-Flower-PNG-Clipart.png" alt="Flowers">
+    <img class="balloons" src="https://www.pngmart.com/files/7/Balloons-PNG-Transparent-Image.png" alt="Balloons">
     <div class="container">
         <h1>Ms Riddhi Shetty, Will you be my Valentine? ❤️</h1>
         <div class="buttons">
-            <button class="yes" onclick="alert('Yay! ❤️')">Yes</button>
-            <button class="no" onmouseover="moveButton(this)">No</button>
+            <button class="yes" onclick="sayYes()">Yes</button>
+            <button class="no" onmouseover="moveButton(this)" onclick="sayNo()">No</button>
         </div>
     </div>
     <script>
@@ -59,6 +89,12 @@
             let y = Math.random() * (window.innerHeight - 50);
             button.style.left = `${x}px`;
             button.style.top = `${y}px`;
+        }
+        function sayYes() {
+            alert('It will be my honour baby! ❤️');
+        }
+        function sayNo() {
+            alert('Are you sure? 😢');
         }
     </script>
 </body>
